@@ -426,6 +426,48 @@
             margin-bottom: 20px;
         }
         
+        .news-card a {
+            color: var(--primary-orange);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+        
+        .news-card a:hover {
+            color: var(--dark-orange);
+            text-decoration: underline;
+        }
+        
+        /* SOCIAL MEDIA LINKS */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px 20px;
+            background-color: rgba(255, 140, 0, 0.2);
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+            font-weight: 500;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-orange);
+            transform: translateX(5px);
+        }
+        
+        .social-icon {
+            font-size: 1.5rem;
+        }
+        
         /* FOOTER */
         footer {
             background-color: var(--accent-dark);
@@ -664,6 +706,30 @@
                     <div class="role">Gemeindevertretung</div>
                     <p>Engagiert für eine bürgernahe Kommunalpolitik in Lohra.</p>
                 </div>
+                <div class="team-card">
+                    <img src="hans.jpg" alt="Hans Kraft">
+                    <h3>Hans Kraft</h3>
+                    <div class="role">Gemeindevertretung</div>
+                    <p>Setzt sich für die Belange der Gemeinde ein.</p>
+                </div>
+                <div class="team-card">
+                    <img src="michael.jpg" alt="Michael Witt">
+                    <h3>Michael Witt</h3>
+                    <div class="role">Gemeindevertretung</div>
+                    <p>Engagiert für Lohra und seine Ortsteile.</p>
+                </div>
+                <div class="team-card">
+                    <img src="kathrin.jpg" alt="Kathrin Neuser">
+                    <h3>Kathrin Neuser</h3>
+                    <div class="role">Gemeindevertretung</div>
+                    <p>Vertritt die Interessen der Bürgerinnen und Bürger.</p>
+                </div>
+                <div class="team-card">
+                    <img src="franziska.jpg" alt="Franziska Willershausen">
+                    <h3>Franziska Willershausen</h3>
+                    <div class="role">Gemeindevertretung</div>
+                    <p>Setzt sich für eine transparente Kommunalpolitik ein.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -673,7 +739,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Aktuelles</h2>
-                <p>Neuigkeiten und Termine</p>
+                <p>Neuigkeiten und aktuelle Informationen</p>
             </div>
             
             <div class="news-grid">
@@ -694,9 +760,14 @@
                 </article>
                 <article class="news-card">
                     <div class="news-card-content">
-                        <div class="news-date">1993</div>
-                        <h3>Schwimmbad Lohra gerettet</h3>
-                        <p>Aus unserer Gründungsinitiative: Das Schwimmbad bleibt erhalten! Politik von Bürgern für Bürger.</p>
+                        <div class="news-date">Aktuell</div>
+                        <h3>Folgen Sie uns online</h3>
+                        <p>Bleiben Sie auf dem Laufenden mit unseren neuesten Nachrichten und Ankündigungen:</p>
+                        <p>
+                            <a href="https://www.facebook.com/share/1GL9L3GJ2t/" target="_blank" rel="noopener noreferrer">→ Facebook</a><br>
+                            <a href="https://www.instagram.com/bfb.lohra?igsh=cmszdmpicHlyYWI1" target="_blank" rel="noopener noreferrer">→ Instagram</a><br>
+                            <a href="https://www.google.com/search?q=BfB+Lohra" target="_blank" rel="noopener noreferrer">→ Google Suche</a>
+                        </p>
                     </div>
                 </article>
             </div>
@@ -736,7 +807,14 @@
             
             <div class="footer-section">
                 <h3>Folgen Sie uns</h3>
-                <p style="font-size: 0.9rem; opacity: 0.8;">Aktuelle Informationen auf unseren Social-Media-Kanälen</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1GL9L3GJ2t/" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <span class="social-icon">📘</span> Facebook
+                    </a>
+                    <a href="https://www.instagram.com/bfb.lohra?igsh=cmszdmpicHlyYWI1" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <span class="social-icon">📷</span> Instagram
+                    </a>
+                </div>
             </div>
         </div>
         
