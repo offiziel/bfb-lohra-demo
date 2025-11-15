@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bündnis für Bürgernähe (BfB) Lohra - Die stärkste kommunalpolitische Kraft in Lohra mit 44% und 14 von 31 Sitzen. Politik von Bürgern für Bürger – bürgernah, transparent, sachorientiert.">
-    <meta name="keywords" content="BfB Lohra, Bündnis für Bürgernähe, Kommunalpolitik Lohra, Karina Schlemper-Latzel, Bürgermeisterin Lohra, Gemeinde Lohra, Hessen">
+    <meta name="description" content="Bündnis für Bürgernähe (BfB) Lohra - Die stärkste kommunalpolitische Kraft in Lohra mit 35% und 11 von 31 Sitzen. Politik von Bürgern für Bürger – bürgernah, transparent, sachorientiert.">
+    <meta name="keywords" content="BfB Lohra, Bündnis für Bürgernähe, Kommunalpolitik Lohra, Karina Schlemper-Latzel, Bürgermeisterin Lohra, Gemeinde Lohra, Hessen, Lohra Miteinander">
     <meta name="author" content="Bündnis für Bürgernähe Lohra">
     <title>Bündnis für Bürgernähe (BfB) Lohra - Politik von Bürgern für Bürger</title>
     
@@ -22,11 +22,13 @@
         }
         
         :root {
-            /* Farbschema */
-            --primary-blue: #2C5F8D;
-            --secondary-green: #4CAF50;
-            --accent-red: #D32F2F;
-            --background-gray: #F5F5F5;
+            /* BfB-Farbschema (Orange wie im Logo) */
+            --primary-orange: #FF8C00;       /* BfB-Orange */
+            --secondary-orange: #FFA500;     /* Helles Orange */
+            --dark-orange: #E67E00;          /* Dunkel-Orange für Hover */
+            --accent-dark: #333333;          /* Dunkelgrau */
+            --background-light: #FFFFFF;     /* Weiß */
+            --background-gray: #F7F7F7;      /* Sehr helles Grau */
             --white: #FFFFFF;
             --text-dark: #333333;
             --text-light: #666666;
@@ -35,6 +37,1462 @@
             --section-padding-desktop: 100px;
             --section-padding-mobile: 60px;
             --container-max-width: 1200px;
+            
+            /* Transitions */
+            --transition-smooth: all 0.3s ease;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ==================== NAVIGATION ==================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: var(--transition-smooth);
+        }
+        
+        nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .nav-container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        
+        .nav-logo-img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .nav-logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-orange);
+            transition: var(--transition-smooth);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background-color: var(--primary-orange);
+            transition: var(--transition-smooth);
+            border-radius: 2px;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        /* ==================== HERO SECTION ==================== */
+        #hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1600') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            padding: 0 30px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-logo {
+            width: 120px;
+            height: auto;
+            margin: 0 auto 30px;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        
+        .hero-content .stats {
+            font-size: 1rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            display: inline-block;
+            min-width: 180px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-orange);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark-orange);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: var(--accent-dark);
+            color: var(--white);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #222;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(51, 51, 51, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+        
+        /* ==================== SECTIONS ==================== */
+        section {
+            padding: var(--section-padding-desktop) 30px;
+        }
+        
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* ==================== ÜBER UNS SECTION ==================== */
+        #about {
+            background-color: var(--background-gray);
+        }
+        
+        .about-text {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            text-align: center;
+            line-height: 1.8;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+        
+        .about-text p:last-of-type {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary-orange);
+            margin-top: 30px;
+        }
+        
+        .value-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .value-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.15);
+        }
+        
+        .value-card .icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .value-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+        }
+        
+        .value-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* ==================== ERFOLGE SECTION ==================== */
+        #erfolge {
+            background-color: var(--white);
+        }
+        
+        .erfolge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .erfolg-card {
+            background-color: var(--background-gray);
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .erfolg-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--secondary-orange));
+        }
+        
+        .erfolg-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.15);
+        }
+        
+        .erfolg-card .year {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+        }
+        
+        .erfolg-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .erfolg-card h3 {
+            font-size: 1.3rem;
+            color: var(--accent-dark);
+            margin-bottom: 15px;
+        }
+        
+        .erfolg-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* ==================== ZIELE SECTION ==================== */
+        #ziele {
+            background-color: var(--background-gray);
+        }
+        
+        .ziele-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .ziel-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--primary-orange);
+        }
+        
+        .ziel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.15);
+            border-left-color: var(--secondary-orange);
+        }
+        
+        .ziel-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .ziel-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+        }
+        
+        .ziel-card p {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+        
+        /* ==================== TEAM SECTION ==================== */
+        #team {
+            background-color: var(--white);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-card {
+            background-color: var(--background-gray);
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .team-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.15);
+        }
+        
+        .team-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid var(--primary-orange);
+            transition: var(--transition-smooth);
+        }
+        
+        .team-card:hover img {
+            border-color: var(--secondary-orange);
+        }
+        
+        .team-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-orange);
+            margin-bottom: 8px;
+        }
+        
+        .team-card .role {
+            font-weight: 600;
+            color: var(--accent-dark);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .team-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        /* ==================== AKTUELLES SECTION ==================== */
+        #aktuelles {
+            background-color: var(--background-gray);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.15);
+        }
+        
+        .news-card-content {
+            padding: 30px;
+        }
+        
+        .news-date {
+            color: var(--primary-orange);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .news-card h3 {
+            font-size: 1.4rem;
+            color: var(--accent-dark);
+            margin-bottom: 15px;
+        }
+        
+        .news-card p {
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .news-link {
+            color: var(--primary-orange);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+        
+        .news-link:hover {
+            color: var(--dark-orange);
+            text-decoration: underline;
+        }
+        
+        /* ==================== NEWSLETTER SECTION ==================== */
+        #newsletter {
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            color: var(--white);
+        }
+        
+        #newsletter .section-header h2,
+        #newsletter .section-header p {
+            color: var(--white);
+        }
+        
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--background-gray);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition-smooth);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+        }
+        
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .form-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 3px;
+            cursor: pointer;
+        }
+        
+        .form-checkbox label {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        .form-button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-orange);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        
+        .form-button:hover {
+            background-color: var(--dark-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+        }
+        
+        .form-note {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: var(--primary-orange);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        /* ==================== KONTAKT SECTION ==================== */
+        #kontakt {
+            background-color: var(--white);
+        }
+        
+        .kontakt-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .kontakt-form {
+            background-color: var(--background-gray);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .kontakt-info {
+            background-color: var(--background-gray);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .kontakt-info h3 {
+            color: var(--primary-orange);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+        
+        .info-item {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .info-item strong {
+            color: var(--primary-orange);
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .info-item a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+        
+        .info-item a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .social-links {
+            margin-top: 40px;
+        }
+        
+        .social-links h4 {
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-orange);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: var(--transition-smooth);
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-orange);
+            transform: scale(1.1);
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            resize: vertical;
+            min-height: 150px;
+            transition: var(--transition-smooth);
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+        }
+        
+        /* ==================== FOOTER ==================== */
+        footer {
+            background-color: var(--accent-dark);
+            color: var(--white);
+            padding: 60px 30px 30px;
+        }
+        
+        .footer-content {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p {
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        
+        .footer-logo-img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            opacity: 0.9;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary-orange);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+        
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Navigation Mobile */
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.1);
+                padding: 30px 0;
+                gap: 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            /* Sections Mobile Padding */
+            section {
+                padding: var(--section-padding-mobile) 20px;
+            }
+            
+            /* Hero Mobile */
+            #hero {
+                background-attachment: scroll;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-content .stats {
+                font-size: 0.9rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            /* Section Headers Mobile */
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .section-header p {
+                font-size: 1rem;
+            }
+            
+            /* Kontakt Grid Mobile */
+            .kontakt-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .newsletter-form,
+            .kontakt-form,
+            .kontakt-info {
+                padding: 30px 20px;
+            }
+            
+            /* Footer Mobile */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.7rem;
+            }
+            
+            .value-card,
+            .erfolg-card,
+            .ziel-card {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* ==================== ACCESSIBILITY ==================== */
+        .btn:focus,
+        input:focus,
+        textarea:focus,
+        a:focus {
+            outline: 3px solid var(--secondary-orange);
+            outline-offset: 2px;
+        }
+        
+        /* Screen Reader Only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo" aria-label="BfB Lohra Startseite">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Crect fill='%23FF8C00' width='200' height='80'/%3E%3Ctext x='20' y='35' font-family='Arial' font-size='24' font-weight='bold' fill='white'%3EBfB%3C/text%3E%3Ctext x='20' y='55' font-family='Arial' font-size='12' fill='white'%3EBündnis für%3C/text%3E%3Ctext x='20' y='70' font-family='Arial' font-size='12' fill='white'%3EBürgernähe%3C/text%3E%3Ccircle cx='160' cy='40' r='25' fill='white'/%3E%3Cellipse cx='155' cy='35' rx='3' ry='5' fill='%23FF8C00'/%3E%3Cellipse cx='165' cy='35' rx='3' ry='5' fill='%23FF8C00'/%3E%3Cellipse cx='150' cy='45' rx='3' ry='5' fill='%23FF8C00'/%3E%3Cellipse cx='160' cy='45' rx='3' ry='5' fill='%23FF8C00'/%3E%3Cellipse cx='170' cy='45' rx='3' ry='5' fill='%23FF8C00'/%3E%3C/svg%3E" alt="BfB Logo" class="nav-logo-img">
+                <span class="nav-logo-text">Lohra</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero">Start</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#ziele">Ziele</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#aktuelles">Aktuelles</a></li>
+                <li><a href="#newsletter">Newsletter</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger" aria-label="Menü öffnen" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="hero">
+        <div class="hero-content">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Crect fill='%23FF8C00' width='200' height='80'/%3E%3Ctext x='20' y='35' font-family='Arial' font-size='24' font-weight='bold' fill='white'%3EBfB%3C/text%3E%3Ctext x='20' y='55' font-family='Arial' font-size='12' fill='white'%3EBündnis für%3C/text%3E%3Ctext x='20' y='70' font-family='Arial' font-size='12' fill='white'%3EBürgernähe%3C/text%3E%3Ccircle cx='160' cy='40' r='25' fill='white'/%3E%3Cellipse cx='155' cy='35' rx='3' ry='5' fill='%23FF8C00'/%3E%3Cellipse cx='165' cy='35' rx='3' ry='5' fill='%23FF8C00'/%3E%3Cellipse cx='150' cy='45' rx='3' ry='5' fill='%23FF8C00'/%3E%3Cellipse cx='160' cy='45' rx='3' ry='5' fill='%23FF8C00'/%3E%3Cellipse cx='170' cy='45' rx='3' ry='5' fill='%23FF8C00'/%3E%3C/svg%3E" alt="BfB Logo" class="hero-logo">
+            <h1>Bündnis für Bürgernähe Lohra</h1>
+            <p class="subtitle">Politik von Bürgern für Bürger – bürgernah, transparent, sachorientiert</p>
+            <p class="stats">Stärkste Kraft in Lohra: 35% | 11 von 31 Sitzen | Ihre Bürgermeisterin: Karina Schlemper-Latzel (BfB)</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">Mehr erfahren</a>
+                <a href="#ziele" class="btn btn-secondary">Unsere Ziele</a>
+                <a href="#newsletter" class="btn btn-outline">Newsletter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ÜBER UNS SECTION ==================== -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Wer wir sind</h2>
+            </div>
+            
+            <div class="about-text">
+                <p>Wir, das Bündnis für Bürgernähe (BfB), sind eine politische Wählervereinigung aus der Mitte der Gesellschaft – keine Partei! Bürgernähe ist für uns keine Floskel, sondern unser Leitbild.</p>
+                
+                <p>Entstanden 1993 aus einer Bürgerinitiative zur Rettung des Schwimmbads Lohra, vertreten wir seither sachorientierte Kommunalpolitik von Bürgern für Bürger – unabhängig von bundes- oder landespolitischen Themen.</p>
+                
+                <p>Seit 2021 sind wir die stärkste politische Kraft in Lohra mit 35% der Stimmen und 11 von 31 Sitzen. Seit November 2022 stellen wir mit Karina Schlemper-Latzel auch die Bürgermeisterin der Gemeinde Lohra.</p>
+                
+                <p>Ganz gleich, aus welchem Ortsteil, ob alt oder jung, ob Frau oder Mann: Wir bieten all jenen eine politische Heimat, die eine bürgernahe Kommunalpolitik der Mitte für die Gemeinde Lohra möchten.</p>
+                
+                <p><strong>Werden auch Sie unser Bündnispartner!</strong></p>
+            </div>
+            
+            <div class="value-cards">
+                <div class="value-card">
+                    <div class="icon">🤝</div>
+                    <h3>Bürgernähe</h3>
+                    <p>Direkte Kommunikation mit allen Bürgerinnen und Bürgern</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🔍</div>
+                    <h3>Transparenz</h3>
+                    <p>Offene Entscheidungen, frühzeitige Information</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🌱</div>
+                    <h3>Sachorientierung</h3>
+                    <p>Lösungen für lokale Themen, ohne Parteipolitik</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ERFOLGE SECTION ==================== -->
+    <section id="erfolge">
+        <div class="container">
+            <div class="section-header">
+                <h2>Was wir erreicht haben</h2>
+                <p>Seit 1993 für Lohra aktiv – mit konkreten Ergebnissen</p>
+            </div>
+            
+            <div class="erfolge-grid">
+                <div class="erfolg-card">
+                    <div class="year">1993</div>
+                    <div class="icon">🏊</div>
+                    <h3>Schwimmbad Lohra gerettet</h3>
+                    <p>Aus unserer Gründungsinitiative: Das Schwimmbad bleibt erhalten!</p>
+                </div>
+                <div class="erfolg-card">
+                    <div class="year">2021</div>
+                    <div class="icon">📊</div>
+                    <h3>Stärkste Kraft mit 35%</h3>
+                    <p>Wahlerfolg: 11 von 31 Sitzen in der Gemeindevertretung</p>
+                </div>
+                <div class="erfolg-card">
+                    <div class="year">2022</div>
+                    <div class="icon">👩‍💼</div>
+                    <h3>Bürgermeisterin Karina Schlemper-Latzel</h3>
+                    <p>Erste BfB-Bürgermeisterin für Lohra gewählt</p>
+                </div>
+                <div class="erfolg-card">
+                    <div class="year">2024</div>
+                    <div class="icon">📢</div>
+                    <h3>Bürgerbeteiligungssatzung</h3>
+                    <p>Frühzeitige Einbindung der Bürgerinnen und Bürger in Entscheidungen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ZIELE SECTION ==================== -->
+    <section id="ziele">
+        <div class="container">
+            <div class="section-header">
+                <h2>Wofür wir stehen</h2>
+                <p>Unsere Schwerpunkte für die Gemeinde Lohra</p>
+            </div>
+            
+            <div class="ziele-grid">
+                <div class="ziel-card">
+                    <span class="icon">📢</span>
+                    <h3>Bürgerbeteiligung stärken</h3>
+                    <p>Transparente Entscheidungen, offene Bürgerversammlungen, frühzeitige Information über gemeindliche Vorhaben</p>
+                </div>
+                <div class="ziel-card">
+                    <span class="icon">🌍</span>
+                    <h3>Natur & Umwelt schützen</h3>
+                    <p>Praxisorientierter Umweltschutz: Bienenschutz, Blühwiesen, Erhalt von Wald und Landschaft</p>
+                </div>
+                <div class="ziel-card">
+                    <span class="icon">🏗️</span>
+                    <h3>Infrastruktur verbessern</h3>
+                    <p>Moderne Verwaltung, schnelle Prozesse, Ausweispapiere online beantragen</p>
+                </div>
+                <div class="ziel-card">
+                    <span class="icon">🏡</span>
+                    <h3>Lebensqualität erhöhen</h3>
+                    <p>Attraktive Angebote für alle Generationen, Erhalt wichtiger Einrichtungen wie Schwimmbad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TEAM SECTION ==================== -->
+    <section id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2>Unser Team</h2>
+                <p>Menschen aus Lohra für Lohra</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/150" alt="Karina Schlemper-Latzel, Bürgermeisterin">
+                    <h3>Karina Schlemper-Latzel</h3>
+                    <div class="role">Bürgermeisterin</div>
+                    <p>Seit November 2022 Bürgermeisterin der Gemeinde Lohra. Bürgernah, transparent und mit voller Energie für unsere Gemeinde im Einsatz.</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/150" alt="Harald Rink, Vorsitzender BfB">
+                    <h3>Harald Rink</h3>
+                    <div class="role">Vorsitzender BfB</div>
+                    <p>Langjähriger Vorsitzender des BfB. Koordiniert unsere Arbeit und steht für sachorientierte Kommunalpolitik.</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/150" alt="Niklas Göpel, Gemeindevertretung">
+                    <h3>Niklas Göpel</h3>
+                    <div class="role">Gemeindevertretung</div>
+                    <p>Aus Lohra. Engagiert sich für die Anliegen der Bürgerinnen und Bürger vor Ort.</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/150" alt="Margarete Fiedler, Gemeindevertretung">
+                    <h3>Margarete Fiedler</h3>
+                    <div class="role">Gemeindevertretung</div>
+                    <p>Aus Kirchvers. Setzt sich für die Belange ihres Ortsteils ein.</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/150" alt="Rainer Jäckel, Gemeindevertretung">
+                    <h3>Rainer Jäckel</h3>
+                    <div class="role">Gemeindevertretung</div>
+                    <p>Aus Reimershausen. Vertritt die Interessen der Gemeinde mit Sachverstand.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== AKTUELLES SECTION ==================== -->
+    <section id="aktuelles">
+        <div class="container">
+            <div class="section-header">
+                <h2>Aktuelles aus Lohra</h2>
+                <p>Termine, Erfolge und Neuigkeiten</p>
+            </div>
+            
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-card-content">
+                        <div class="news-date">30. September 2025</div>
+                        <h3>Lohra Miteinander – Wir feiern UNS!</h3>
+                        <p>Liebe Bürgerinnen und Bürger: Wir laden herzlich zur Bürgerveranstaltung am 6.09.2025 von 18:00 - 18:30 Uhr ein. Gemeindehaus Lohra, buntes Programm für alle Generationen!</p>
+                        <a href="#" class="news-link">Weiterlesen →</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-card-content">
+                        <div class="news-date">11. September 2025</div>
+                        <h3>Ausschusssitzungen im September</h3>
+                        <p>Bau-, Wirtschaft- u. Umweltausschuss sowie Haupt- u. Finanzausschuss tagen öffentlich. Alle Bürgerinnen und Bürger herzlich eingeladen!</p>
+                        <a href="#" class="news-link">Weiterlesen →</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-card-content">
+                        <div class="news-date">März 2021</div>
+                        <h3>Historischer Wahlerfolg</h3>
+                        <p>Mit 35% der Stimmen wird BfB stärkste Kraft in Lohra. Vielen Dank für Ihr Vertrauen!</p>
+                        <a href="#" class="news-link">Weiterlesen →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NEWSLETTER SECTION ==================== -->
+    <section id="newsletter">
+        <div class="container">
+            <div class="section-header">
+                <h2>Bleiben Sie informiert</h2>
+                <p>Erhalten Sie aktuelle Neuigkeiten, Termine und Informationen aus der Gemeinde Lohra direkt per E-Mail. Kein Spam, jederzeit abbestellbar.</p>
+            </div>
+            
+            <form class="newsletter-form" id="newsletterForm">
+                <div class="form-group">
+                    <label for="nl-name">Vorname *</label>
+                    <input type="text" id="nl-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="nl-email">E-Mail-Adresse *</label>
+                    <input type="email" id="nl-email" name="email" required>
+                </div>
+                <div class="form-checkbox">
+                    <input type="checkbox" id="nl-privacy" name="privacy" required>
+                    <label for="nl-privacy">Ich akzeptiere die <a href="#" style="color: var(--primary-orange); text-decoration: underline;">Datenschutzbestimmungen</a> *</label>
+                </div>
+                <button type="submit" class="form-button">Jetzt anmelden</button>
+                <div class="success-message" id="nlSuccess">
+                    ✓ Vielen Dank! Bitte bestätigen Sie Ihre Anmeldung per E-Mail (Double-Opt-In).
+                </div>
+                <p class="form-note">Wir nutzen Double-Opt-In für Ihre Sicherheit und versenden maximal 1-2 Newsletter pro Monat.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==================== KONTAKT SECTION ==================== -->
+    <section id="kontakt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kontakt</h2>
+                <p>Wir freuen uns auf Ihre Nachricht</p>
+            </div>
+            
+            <div class="kontakt-wrapper">
+                <form class="kontakt-form" id="kontaktForm">
+                    <div class="form-group">
+                        <label for="k-name">Name *</label>
+                        <input type="text" id="k-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="k-email">E-Mail-Adresse *</label>
+                        <input type="email" id="k-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="k-subject">Betreff</label>
+                        <input type="text" id="k-subject" name="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="k-message">Nachricht *</label>
+                        <textarea id="k-message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="form-button">Nachricht senden</button>
+                    <div class="success-message" id="kSuccess">
+                        ✓ Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.
+                    </div>
+                </form>
+                
+                <div class="kontakt-info">
+                    <h3>Bündnis für Bürgernähe (BfB) Lohra</h3>
+                    <div class="info-item">
+                        <strong>Vorsitzender:</strong>
+                        Harald Rink
+                    </div>
+                    <div class="info-item">
+                        <strong>Adresse:</strong>
+                        Friedrich-Walther-Str. 10<br>
+                        35102 Lohra
+                    </div>
+                    <div class="info-item">
+                        <strong>E-Mail:</strong>
+                        <a href="mailto:BfB-Lohra@web.de">BfB-Lohra@web.de</a>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>Folgen Sie uns</h4>
+                        <div class="social-icons">
+                            <a href="https://facebook.com/bfb.lohra" class="social-icon" target="_blank" rel="noopener" aria-label="BfB auf Facebook">
+                                <span>f</span>
+                            </a>
+                            <a href="https://instagram.com/bfb.lohra" class="social-icon" target="_blank" rel="noopener" aria-label="BfB auf Instagram">
+                                <span>📷</span>
+                            </a>
+                            <a href="mailto:BfB-Lohra@web.de" class="social-icon" aria-label="E-Mail an BfB">
+                                <span>✉</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Crect fill='%23FF8C00' width='200' height='80'/%3E%3Ctext x='20' y='35' font-family='Arial' font-size='24' font-weight='bold' fill='white'%3EBfB%3C/text%3E%3Ctext x='20' y='55' font-family='Arial' font-size='12' fill='white'%3EBündnis für%3C/text%3E%3Ctext x='20' y='70' font-family='Arial' font-size='12' fill='white'%3EBürgernähe%3C/text%3E%3Ccircle cx='160' cy='40' r='25' fill='white'/%3E%3Cellipse cx='155' cy='35' rx='3' ry='5' fill='%23FF8C00'/%3E%3Cellipse cx='165' cy='35' rx='3' ry='5' fill='%23FF8C00'/%3E%3Cellipse cx='150' cy='45' rx='3' ry='5' fill='%23FF8C00'/%3E%3Cellipse cx='160' cy='45' rx='3' ry='5' fill='%23FF8C00'/%3E%3Cellipse cx='170' cy='45' rx='3' ry='5' fill='%23FF8C00'/%3E%3C/svg%3E" alt="BfB Logo" class="footer-logo-img">
+                <h3>Bündnis für Bürgernähe Lohra</h3>
+                <p>Politik von Bürgern für Bürger</p>
+                <p style="margin-top: 20px;">&copy; 2025 BfB Lohra</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Impressum</a></li>
+                    <li><a href="#">Datenschutz</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Folgen Sie uns</h3>
+                <div class="social-icons" style="margin-bottom: 20px;">
+                    <a href="https://facebook.com/bfb.lohra" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
+                        <span>f</span>
+                    </a>
+                    <a href="https://instagram.com/bfb.lohra" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+                        <span>📷</span>
+                    </a>
+                </div>
+                <p style="font-size: 0.9rem; opacity: 0.8;">Letzte Aktualisierung: November 2025</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Bündnis für Bürgernähe (BfB) Lohra - Eine überparteiliche Wählervereinigung</p>
+        </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // ==================== STICKY NAVIGATION ====================
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ==================== HAMBURGER MENU ====================
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        hamburger.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                hamburger.click();
+            }
+        });
+
+        // ==================== SMOOTH SCROLLING ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = navbar.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ==================== NEWSLETTER FORMULAR ====================
+        const newsletterForm = document.getElementById('newsletterForm');
+        const nlSuccess = document.getElementById('nlSuccess');
+        
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('nl-name').value.trim();
+            const email = document.getElementById('nl-email').value.trim();
+            const privacy = document.getElementById('nl-privacy').checked;
+            
+            if (name && email && privacy) {
+                nlSuccess.classList.add('show');
+                newsletterForm.reset();
+                
+                setTimeout(() => {
+                    nlSuccess.classList.remove('show');
+                }, 5000);
+            }
+        });
+
+        // ==================== KONTAKT FORMULAR ====================
+        const kontaktForm = document.getElementById('kontaktForm');
+        const kSuccess = document.getElementById('kSuccess');
+        
+        kontaktForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('k-name').value.trim();
+            const email = document.getElementById('k-email').value.trim();
+            const message = document.getElementById('k-message').value.trim();
+            
+            if (name && email && message) {
+                kSuccess.classList.add('show');
+                kontaktForm.reset();
+                
+                setTimeout(() => {
+                    kSuccess.classList.remove('show');
+                }, 5000);
+            }
+        });
+
+        // ==================== PARALLAX-EFFEKT ====================
+        window.addEventListener('scroll', () => {
+            const hero = document.getElementById('hero');
+            const scrolled = window.pageYOffset;
+            if (hero) {
+                hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+            }
+        });
+
+        // ==================== ANIMATIONEN BEIM SCROLLEN ====================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.value-card, .erfolg-card, .ziel-card, .team-card, .news-card').forEach(card => {
+            card.style.opacity = '0';
+            observer.observe(card);
+        });
+    </script>
+
+</body>
+</html>            --container-max-width: 1200px;
             
             /* Transitions */
             --transition-smooth: all 0.3s ease;
