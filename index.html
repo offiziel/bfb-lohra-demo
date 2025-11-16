@@ -1,4 +1,4 @@
-     <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
@@ -49,54 +49,50 @@
       box-shadow: 0 6px 32px rgba(255,140,0,0.08);
     }
     h2 { color: #FF8C00; letter-spacing: 0.02em; margin-bottom: 12px; }
-    .teamgrid { display:flex; flex-wrap:wrap; gap:28px; margin-top:26px; justify-content:center;}
-    .teammember {
+    .teamgrid, .vereinsgrid { display:flex; flex-wrap:wrap; gap:28px; margin-top:26px; justify-content:flex-start;}
+    .membercard {
       border: 2px solid #fbe4c1; border-radius: 12px;
       padding: 14px 13px 19px; background:#fffbf5;
       box-shadow: 0 2px 8px rgba(255,140,0,0.09);
-      width: 205px; text-align:center;
+      width: 190px; text-align:center;
       transition:.2s; margin-bottom:22px;
     }
-    .teammember img { width:88px; height:88px; border-radius:50%; margin:12px 0 7px; object-fit:cover;}
-    .teammember h4 { color:#FF8C00;margin:2px 0 5px;font-size:1.13rem; }
-    .teammember .rolle {font-size:0.98rem;font-weight:600;color:#3a3731;}
-    .teammember p {font-size:0.97rem;margin-top:7px;color:#444;}
-    /* Kummerkasten/Abstimmung */
-    .twocolsflex {display:flex;gap:35px;flex-wrap:wrap;justify-content:space-between;}
-    .colbox {
-      flex:1; min-width:300px; max-width:480px; background:#fffce9; border-radius:11px;
-      box-shadow:0 2px 15px rgba(255,140,0,0.10); padding:30px 24px 24px 24px; margin-bottom:28px;
+    .membercard img { width:88px; height:88px; border-radius:50%; margin:12px 0 7px; object-fit:cover;}
+    .membercard h4 { color:#FF8C00;margin:2px 0 5px;font-size:1.13rem; }
+    .membercard .role {font-size:0.98rem;font-weight:600;color:#3a3731;}
+    .membercard p {font-size:0.97rem;margin-top:7px;color:#444;}
+
+    /* Abstimmung */
+    .abstimmung {
+      background: #f5f8ff; padding: 26px 22px; border-radius:10px; box-shadow:0 2px 15px rgba(0,108,255,0.07);
+      margin-bottom:22px;
     }
-    .colbox2 { background:#f5f8ff; }
-    textarea { min-height:84px; }
-    label { font-weight:500; color:#595959;}
-    .hidden { display: none;}
-    button { background:#FF8C00; border:none; color:#fff; font-weight:700; border-radius:23px; padding:11px 34px; font-size:1.09rem; margin-top:6px; cursor:pointer;}
-    button:hover { background:#e07000;}
-    .vote-result {color:#1a7e53; font-weight:600; font-size:1.08rem; margin-top:15px;}
+    .abstimmung h3 { color:#FF8C00;display:flex;align-items:center;gap:10px; font-size:1.4rem; }
+    .abstimmung p {font-size:1.08rem; margin-bottom:16px; }
+
+    /* Kalender (Animiert, Aufklapp) */
     .calendar-item {
-      background: #fff; border: 1px solid #ddd; padding: 12px 16px;
-      margin-bottom:12px; border-radius:8px; cursor:pointer;
+      background: #fff; border: 1px solid #ddd; border-radius:8px; padding:12px 16px; margin-bottom:12px; cursor:pointer; transition: all 0.2s;
     }
-    .calendar-item:hover {
-      background: #f0f0f0;
-    }
+    .calendar-item:hover { background: #f0f0f0; }
+    .calendar-item.active { background: #ffeed4; border-color: #FF8C00; }
     .calendar-date {
-      font-weight:600; color:#0066cc; display:inline-block; margin-right:10px; background:#ddffdd; padding:3px 7px; border-radius:6px;
+      font-weight:600; color:#0066cc; background:#ddffdd; padding:3px 7px; border-radius:6px; margin-right:10px; display:inline-block;
     }
     .calendar-title { font-size:1.06rem; margin:4px 0 2px 0; }
-    .calendar-desc { font-size:0.97rem; color:#555; margin:0 0 4px 0; }
+    .calendar-desc { font-size:0.97rem; color:#555; margin:0 0 4px 0; display:none; }
+    .calendar-item.active .calendar-desc { display:block; }
+
     footer {
       text-align:center; padding:46px 0 18px 0; background:#fff5e0;
       color:#ab7100; font-size:1rem; margin-top:60px;
       border-radius: 22px 22px 0 0;
       letter-spacing: 0.02em;
     }
-    @media (max-width:900px){ .container {padding:13px 3vw 23px 3vw;} nav {font-size:1rem;} .teamgrid{gap:16px;} }
+    @media (max-width:900px){ .container {padding:13px 3vw 23px 3vw;} nav {font-size:1rem;} .teamgrid, .vereinsgrid{gap:16px;} }
     @media (max-width:600px){
       .container {padding:6vw 0 7vw 0; margin:0; border-radius:0;}
       header {font-size:1.3rem;}
-      .twocolsflex { flex-direction:column;}
     }
   </style>
 </head>
@@ -112,81 +108,78 @@
 <div class="container" id="team">
   <h2>Unser Team</h2>
   <div class="teamgrid">
-    <div class="teammember"><img src="1000198555.jpg" alt="Harald Rink"><h4>Harald Rink</h4><div class="rolle">Vorsitz</div><p>Koordiniert die Initiative und prüft alle Bürgeranfragen.</p></div>
-    <div class="teammember"><img src="1000198386.jpg" alt="Klaus Müller"><h4>Klaus Müller</h4><div class="rolle">Gemeindevertretung</div><p>Einsatz für Jugendarbeit und offene Kommunen.</p></div>
-    <div class="teammember"><img src="1000198479.jpg" alt="Niklas Göpel"><h4>Niklas Göpel</h4><div class="rolle">stellv. Fraktionsvorsitz</div><p>Stellvertretender Fraktionsvorsitzender.</p></div>
-    <div class="teammember"><img src="1000198481.jpg" alt="Margarete Fiedler"><h4>Margarete Fiedler</h4><div class="rolle">Finanzen</div><p>Hält Zahlen und Fördermittel im Blick. Für offene Projekte.</p></div>
-    <div class="teammember"><img src="1000198407.jpeg" alt="Markus Schmidt"><h4>Markus Schmidt</h4><div class="rolle">Kommunikation</div><p>Kümmert sich um eure Anliegen & Öffentlichkeit!</p></div>
-    <div class="teammember"><img src="christian.jpg" alt="Christian Kraft"><h4>Christian Kraft</h4><div class="rolle">stellv. Fraktionsvorsitz</div><p>Zweiter stellvertretender Fraktionsvorsitzender.</p></div>
+    <div class="membercard"><img src="1000198555.jpg" alt="Harald Rink"><h4>Harald Rink</h4><div class="role">Vorsitz</div><p>Koordiniert die Initiative und prüft alle Bürgeranfragen.</p></div>
+    <div class="membercard"><img src="1000198386.jpg" alt="Klaus Müller"><h4>Klaus Müller</h4><div class="role">Gemeindevertretung</div><p>Einsatz für Jugendarbeit und offene Kommunen.</p></div>
+    <div class="membercard"><img src="1000198479.jpg" alt="Niklas Göpel"><h4>Niklas Göpel</h4><div class="role">stellv. Fraktionsvorsitz</div><p>Stellvertretender Fraktionsvorsitzender.</p></div>
+    <div class="membercard"><img src="1000198481.jpg" alt="Margarete Fiedler"><h4>Margarete Fiedler</h4><div class="role">Finanzen</div><p>Hält Zahlen und Fördermittel im Blick.</p></div>
+    <div class="membercard"><img src="1000198407.jpeg" alt="Markus Schmidt"><h4>Markus Schmidt</h4><div class="role">Kommunikation</div><p>Kümmert sich um eure Anliegen!</p></div>
+    <div class="membercard"><img src="bgh.jpg" alt="BGH Lohra"><h4>BGH Lohra</h4><div class="role">Partnerstück</div><p>Foto vom BGH Lohra.</p></div>
+    <div class="membercard"><img src="christian.jpg" alt="Christian Kraft"><h4>Christian Kraft</h4><div class="role">stellv. Fraktionsvorsitz</div><p>Zweiter stellvertretender Fraktionsvorsitzender.</p></div>
+  </div>
+</div>
+
+<div class="container" id="vereinsmitglieder">
+  <h2>Vereinsmitglieder</h2>
+  <div class="vereinsgrid">
+    <div class="membercard"><img src="1000198404.jpg" alt="Verein1"><h4>Anna Weber</h4><div class="role">Mitglied</div><p>Aktive Unterstützerin.</p></div>
+    <div class="membercard"><img src="1000198400.jpg" alt="Verein2"><h4>Max Berg</h4><div class="role">Mitglied</div><p>Pflegt das Jugendprojekt.</p></div>
+    <div class="membercard"><img src="1000198402.jpg" alt="Verein3"><h4>Lisa Schmidt</h4><div class="role">Mitglied</div><p>Kümmert sich um die Jugend.</p></div>
+    <div class="membercard"><img src="1000198837.jpg" alt="Verein4"><h4>Tobias Vogt</h4><div class="role">Mitglied</div><p>Sponsoring-Koordinator.</p></div>
   </div>
 </div>
 
 <div class="container" id="aktuelles">
-  <h2>Aktuelles – Beteiligen, Mitmachen, Informieren</h2>
-  <div style="margin-bottom:22px;">
-    <b>Unser aktuelles Ziel:</b> <span style="color:#008d50;">Ausbau Jugend-Freizeitmöglichkeiten</span> –
-    <span style="font-size:1.13em;color:#444;">Sag uns anonym, was dir fehlt… und stimme ab!</span>
+  <h2>Aktuelles – Mitmachen & abstimmen</h2>
+  <div class="abstimmung">
+    <h3>🗳️ Deine Stimme zählt</h3>
+    <p><b>Was freut dich dieses Jahr? Abstimmen und mitbestimmen – gemeinsam besser!</b></p>
+    <form id="abstimmungsForm">
+      <div style="margin-bottom:10px;">
+        <label><input type="radio" name="vote" value="Jugendzentrum" required> Jugendzentrum eröffnet</label><br>
+        <label><input type="radio" name="vote" value="OpenAir"> Open-Air Kino</label><br>
+        <label><input type="radio" name="vote" value="Skatepark"> Skatepark für Jugend</label><br>
+        <label><input type="radio" name="vote" value="Nachtbus"> Nachtbus nach Marburg</label><br>
+        <label><input type="radio" name="vote" value="Sport"> Mehr Sportangebote</label><br>
+      </div>
+      <button type="submit">Stimme abgeben</button>
+    </form>
+    <div id="abstimmungsResult" style="color:#1b6a3c; font-weight:600; margin-top:10px; display:none;"></div>
   </div>
-  <!-- Bild BGH -->
-  <div style="margin-bottom:36px;">
-    <img src="bgh.jpg" alt="BGH Lohra" style="max-width:100%;border-radius:8px;margin:12px 0;">
-    <p><b>Nächste Sitzung: Donnerstag, 11.12.2025, 19:00 Uhr im BGH Lohra.</b></p>
-  </div>
-  <!-- Kalender-ähnliche Liste -->
-  <div class="calendar-list">
-    <div class="calendar-item" onclick="alert('Donnerstag, 11.12.2025, 19:00 Uhr
-BGH Lohra
-Nächste Sitzung der Gemeindevertretung')">
+
+  <div class="calendar">
+    <div class="calendar-item" onclick="this.classList.toggle('active')">
       <span class="calendar-date">11.12.</span>
       <div class="calendar-title">Nächste Sitzung</div>
-      <div class="calendar-desc">BGH Lohra, 19:00 Uhr</div>
+      <div class="calendar-desc"><b>Donnerstag, 11.12.2025, 19:00 Uhr, BGH Lohra</b><br>Themenschwerpunkt: Ausbau Jugendangebote.</div>
     </div>
-    <div class="calendar-item" onclick="alert('Nach der letzten Wahl 2021 hatten wir 14 von 31 Sitzen. Drei sind ausgetreten. Jetzt sind wir noch 11 von 31.')">
+    <div class="calendar-item" onclick="this.classList.toggle('active')">
       <span class="calendar-date">2021/2025</span>
       <div class="calendar-title">Sitzverteilung</div>
-      <div class="calendar-desc">14 → 11 Sitzsitze BfB</div>
+      <div class="calendar-desc">Nach der letzten Wahl 2021 hatten wir 14 von 31 Sitzten. Drei sind ausgetreten. Jetzt sind wir noch 11 von 31.</div>
     </div>
   </div>
 
-  <div class="twocolsflex">
-    <!-- Kummerkasten -->
-    <div class="colbox">
-      <h3 style="color:#FF8C00;display:flex;align-items:center;gap:10px">📬 Digitaler Kummerkasten</h3>
-      <p style="font-size:1.05rem;color:#333;opacity:0.99;">Hier kannst du anonym Wünsche, Sorgen, Vorschläge mitteilen.</p>
-      <form id="kummerkastenForm">
-        <textarea name="nachricht" placeholder="Hier anonym schreiben..." rows="5" required style="width:100%;padding:10px;border-radius:6px;border:1px solid #ccc;font-size:1.02rem"></textarea>
-        <div style="margin:13px 0 7px">
-          <label>Kategorie (optional):</label>
-          <select name="kategorie" style="width:100%;padding:7px 6px;margin-top:5px;border-radius:4px">
-            <option>-- Auswahl --</option>
-            <option>Jugendlicher</option>
-            <option>Eltern</option>
-            <option>Senior</option>
-            <option>Verein</option>
-            <option>Bürger:in</option>
-            <option>Andere/K.A.</option>
-          </select>
-        </div>
-        <button type="submit">Absenden</button>
-      </form>
-      <div id="kummerkastenSuccess" class="hidden">Danke für deine Nachricht! Wir nehmen sie ernst.</div>
-    </div>
-    <!-- Abstimmung -->
-    <div class="colbox colbox2">
-      <h3 style="color:#FF8C00;display:flex;align-items:center;gap:10px">🗳️ Deine Stimme zählt</h3>
-      <form id="abstimmungsForm">
-        <div style="font-size:1.11rem;margin-bottom:10px;font-weight:600;">Was freut dich dieses Jahr?</div>
-        <div style="margin-bottom:8px;">
-          <label><input type="radio" name="vote" value="Skatepark" required> Skatepark für Jugend</label><br>
-          <label><input type="radio" name="vote" value="Jugendzentrum"> Jugendzentrum</label><br>
-          <label><input type="radio" name="vote" value="OpenAir"> Open-Air Kino</label><br>
-          <label><input type="radio" name="vote" value="NightBus"> Nachtbus nach Marburg</label><br>
-          <label><input type="radio" name="vote" value="Sport"> Mehr Sportangebote</label><br>
-        </div>
-        <button type="submit">Abstimmen</button>
-      </form>
-      <div id="abstimmungsResult" class="vote-result hidden"></div>
-    </div>
+  <!-- Kummerkasten -->
+  <div style="background:#fffce9; border-radius:10px; padding:28px 22px; box-shadow:0 2px 15px rgba(255,140,0,0.10); margin-top:34px;">
+    <h3 style="color:#FF8C00">📬 Digitaler Kummerkasten</h3>
+    <p style="font-size:1.07rem;color:#333;opacity:0.95;">Hier kannst du anonym Wünsche, Sorgen, Vorschläge mitteilen.</p>
+    <form id="kummerkastenForm" style="margin-top:19px">
+      <textarea name="nachricht" placeholder="Hier anonym schreiben..." rows="4" required style="width:100%;padding:10px;border-radius:6px;border:1px solid #ccc;font-size:1rem"></textarea>
+      <div style="margin:12px 0 6px">
+        <label style="font-size:0.95rem;color:#595959">Kategorie (freiwillig):</label>
+        <select name="kategorie" style="width:100%;padding:7px 6px;margin-top:5px;border-radius:4px">
+          <option>-- Auswahl --</option>
+          <option>Jugendlicher</option>
+          <option>Eltern</option>
+          <option>Senior</option>
+          <option>Verein</option>
+          <option>Bürger:in</option>
+          <option>Andere/K.A.</option>
+        </select>
+      </div>
+      <button type="submit">Absenden</button>
+    </form>
+    <div id="kummerkastenSuccess" style="color:#178b41;font-weight:600;margin-top:13px; display:none;">Danke für deine Nachricht! Wir nehmen sie ernst.</div>
   </div>
 </div>
 
@@ -206,20 +199,19 @@ Nächste Sitzung der Gemeindevertretung')">
 </footer>
 
 <script>
-document.getElementById("kummerkastenForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  this.style.display = "none";
-  document.getElementById("kummerkastenSuccess").classList.remove("hidden");
-});
-document.getElementById("abstimmungsForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  let v = this.vote.value;
-  let msg = "Danke! Deine Stimme für <b>" + v + "</b> wurde gezählt.";
-  this.style.display = "none";
-  let resbox = document.getElementById("abstimmungsResult");
-  resbox.innerHTML = msg; resbox.classList.remove("hidden");
-});
+  document.getElementById("abstimmungsForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    let v = this.vote.value;
+    let resText = "Danke! Deine Stimme für <b>" + v + "</b> wurde gezählt.";
+    this.style.display = "none";
+    let resbox = document.getElementById("abstimmungsResult");
+    resbox.innerHTML = resText; resbox.style.display = "block";
+  });
+  document.getElementById("kummerkastenForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    this.style.display = "none";
+    document.getElementById("kummerkastenSuccess").style.display = "block";
+  });
 </script>
-
 </body>
-</html>   
+</html>
