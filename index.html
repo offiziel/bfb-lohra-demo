@@ -1,918 +1,225 @@
-<!DOCTYPE html>
+     <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bündnis für Bürgernähe (BfB) Lohra - Die stärkste kommunalpolitische Kraft in Lohra mit 35% und 11 von 31 Sitzen. Politik von Bürgern für Bürger.">
-    <title>Bündnis für Bürgernähe (BfB) Lohra</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary-orange: #FF8C00;
-            --secondary-orange: #FFA500;
-            --dark-orange: #E67E00;
-            --accent-dark: #333333;
-            --background-light: #FFFFFF;
-            --background-gray: #F7F7F7;
-            --white: #FFFFFF;
-            --text-dark: #333333;
-            --text-light: #666666;
-            
-            --section-padding-desktop: 100px;
-            --section-padding-mobile: 60px;
-            --container-max-width: 1200px;
-            
-            --transition-smooth: all 0.3s ease;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--background-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* NAVIGATION */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            transition: var(--transition-smooth);
-        }
-        
-        .nav-container {
-            max-width: var(--container-max-width);
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-        }
-        
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-        }
-        
-        .nav-logo-img {
-            height: 50px;
-            width: auto;
-        }
-        
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-            align-items: center;
-        }
-        
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: var(--transition-smooth);
-            padding: 8px 0;
-            position: relative;
-        }
-        
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-orange);
-            transition: var(--transition-smooth);
-        }
-        
-        .nav-menu a:hover {
-            color: var(--primary-orange);
-        }
-        
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-        
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
-        
-        .hamburger span {
-            width: 28px;
-            height: 3px;
-            background-color: var(--primary-orange);
-            transition: var(--transition-smooth);
-            border-radius: 2px;
-        }
-        
-        /* HERO SECTION */
-        #hero {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('hero.jpg') center/cover no-repeat;
-            background-attachment: fixed;
-        }
-        
-        .hero-content {
-            max-width: 900px;
-            padding: 0 30px;
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero-logo {
-            width: 300px;
-            height: auto;
-            margin: 0 auto 30px;
-            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
-        }
-        
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero-content .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 300;
-        }
-        
-        .hero-content .stats {
-            font-size: 1rem;
-            margin-bottom: 40px;
-            opacity: 0.95;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            padding: 15px 35px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-            display: inline-block;
-            min-width: 180px;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-orange);
-            color: var(--white);
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--dark-orange);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
-        }
-        
-        .btn-secondary {
-            background-color: var(--accent-dark);
-            color: var(--white);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #222;
-            transform: translateY(-3px);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--white);
-            color: var(--primary-orange);
-            transform: translateY(-3px);
-        }
-        
-        /* SECTIONS */
-        section {
-            padding: var(--section-padding-desktop) 30px;
-        }
-        
-        .container {
-            max-width: var(--container-max-width);
-            margin: 0 auto;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary-orange);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* ÜBER UNS */
-        #about {
-            background-color: var(--background-gray);
-        }
-        
-        .about-text {
-            max-width: 900px;
-            margin: 0 auto 60px;
-            text-align: center;
-            line-height: 1.8;
-        }
-        
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-        }
-        
-        .value-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .value-card {
-            background-color: var(--white);
-            padding: 40px 30px;
-            border-radius: 8px;
-            text-align: center;
-            transition: var(--transition-smooth);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-        
-        .value-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.15);
-        }
-        
-        .value-card .icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .value-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-orange);
-            margin-bottom: 15px;
-        }
-        
-        .value-card p {
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-        
-        /* TEAM SECTION */
-        #team {
-            background-color: var(--white);
-        }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-        }
-        
-        .team-card {
-            background-color: var(--background-gray);
-            padding: 30px 20px;
-            border-radius: 8px;
-            text-align: center;
-            transition: var(--transition-smooth);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-        
-        .team-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.15);
-        }
-        
-        .team-card img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 5px solid var(--primary-orange);
-            transition: var(--transition-smooth);
-        }
-        
-        .team-card:hover img {
-            border-color: var(--secondary-orange);
-        }
-        
-        .team-card h3 {
-            font-size: 1.2rem;
-            color: var(--primary-orange);
-            margin-bottom: 8px;
-        }
-        
-        .team-card .role {
-            font-weight: 600;
-            color: var(--accent-dark);
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-        
-        .team-card p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        
-        /* AKTUELLES SECTION */
-        #aktuelles {
-            background-color: var(--background-gray);
-        }
-        
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .news-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: var(--transition-smooth);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-        
-        .news-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.15);
-        }
-        
-        .news-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .news-card-content {
-            padding: 30px;
-        }
-        
-        .news-date {
-            color: var(--primary-orange);
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-        
-        .news-card h3 {
-            font-size: 1.4rem;
-            color: var(--accent-dark);
-            margin-bottom: 15px;
-        }
-        
-        .news-card p {
-            color: var(--text-dark);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        .news-card a {
-            color: var(--primary-orange);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-        
-        .news-card a:hover {
-            color: var(--dark-orange);
-            text-decoration: underline;
-        }
-        
-        /* SOCIAL MEDIA LINKS */
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--white);
-            text-decoration: none;
-            padding: 12px 20px;
-            background-color: rgba(255, 140, 0, 0.2);
-            border-radius: 8px;
-            transition: var(--transition-smooth);
-            font-weight: 500;
-        }
-        
-        .social-link:hover {
-            background-color: var(--primary-orange);
-            transform: translateX(5px);
-        }
-        
-        .social-icon {
-            font-size: 1.5rem;
-        }
-        
-        /* FOOTER */
-        footer {
-            background-color: var(--accent-dark);
-            color: var(--white);
-            padding: 60px 30px 30px;
-        }
-        
-        .footer-content {
-            max-width: var(--container-max-width);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-        
-        .footer-section p {
-            line-height: 1.8;
-            opacity: 0.9;
-        }
-        
-        .footer-logo-img {
-            width: 200px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: var(--white);
-            text-decoration: none;
-            transition: var(--transition-smooth);
-            opacity: 0.9;
-        }
-        
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--primary-orange);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            opacity: 0.8;
-        }
-        
-        /* ANIMATIONS */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: var(--white);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0,0,0,0.1);
-                padding: 30px 0;
-                gap: 0;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-menu li {
-                margin: 15px 0;
-            }
-            
-            .hamburger {
-                display: flex;
-            }
-            
-            section {
-                padding: var(--section-padding-mobile) 20px;
-            }
-            
-            #hero {
-                background-attachment: scroll;
-            }
-            
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-content .subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .hero-logo {
-                width: 200px;
-            }
-            
-            .section-header h2 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BfB Lohra – Demo</title>
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      color: #222;
+    }
+    header {
+      background: #FF8C00;
+      color: #fff;
+      padding: 30px;
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+    nav {
+      background: #fff;
+      padding: 13px 0 6px;
+      box-shadow: 0 1px 8px rgba(255,140,0, 0.06);
+      text-align: center;
+    }
+    nav a {
+      color: #FF8C00;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0 24px;
+      font-size: 1.11rem;
+      letter-spacing: 0.01em;
+      padding: 6px 3px;
+      border-radius: 3px;
+      transition: background 0.18s;
+    }
+    nav a:hover {
+      background: #ffeed4;
+    }
+    .container {
+      max-width: 1050px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 14px;
+      padding: 36px 30px 40px 30px;
+      box-shadow: 0 6px 32px rgba(255,140,0,0.08);
+    }
+    h2 { color: #FF8C00; letter-spacing: 0.02em; margin-bottom: 12px; }
+    .teamgrid { display:flex; flex-wrap:wrap; gap:28px; margin-top:26px; justify-content:center;}
+    .teammember {
+      border: 2px solid #fbe4c1; border-radius: 12px;
+      padding: 14px 13px 19px; background:#fffbf5;
+      box-shadow: 0 2px 8px rgba(255,140,0,0.09);
+      width: 205px; text-align:center;
+      transition:.2s; margin-bottom:22px;
+    }
+    .teammember img { width:88px; height:88px; border-radius:50%; margin:12px 0 7px; object-fit:cover;}
+    .teammember h4 { color:#FF8C00;margin:2px 0 5px;font-size:1.13rem; }
+    .teammember .rolle {font-size:0.98rem;font-weight:600;color:#3a3731;}
+    .teammember p {font-size:0.97rem;margin-top:7px;color:#444;}
+    /* Kummerkasten/Abstimmung */
+    .twocolsflex {display:flex;gap:35px;flex-wrap:wrap;justify-content:space-between;}
+    .colbox {
+      flex:1; min-width:300px; max-width:480px; background:#fffce9; border-radius:11px;
+      box-shadow:0 2px 15px rgba(255,140,0,0.10); padding:30px 24px 24px 24px; margin-bottom:28px;
+    }
+    .colbox2 { background:#f5f8ff; }
+    textarea { min-height:84px; }
+    label { font-weight:500; color:#595959;}
+    .hidden { display: none;}
+    button { background:#FF8C00; border:none; color:#fff; font-weight:700; border-radius:23px; padding:11px 34px; font-size:1.09rem; margin-top:6px; cursor:pointer;}
+    button:hover { background:#e07000;}
+    .vote-result {color:#1a7e53; font-weight:600; font-size:1.08rem; margin-top:15px;}
+    .calendar-item {
+      background: #fff; border: 1px solid #ddd; padding: 12px 16px;
+      margin-bottom:12px; border-radius:8px; cursor:pointer;
+    }
+    .calendar-item:hover {
+      background: #f0f0f0;
+    }
+    .calendar-date {
+      font-weight:600; color:#0066cc; display:inline-block; margin-right:10px; background:#ddffdd; padding:3px 7px; border-radius:6px;
+    }
+    .calendar-title { font-size:1.06rem; margin:4px 0 2px 0; }
+    .calendar-desc { font-size:0.97rem; color:#555; margin:0 0 4px 0; }
+    footer {
+      text-align:center; padding:46px 0 18px 0; background:#fff5e0;
+      color:#ab7100; font-size:1rem; margin-top:60px;
+      border-radius: 22px 22px 0 0;
+      letter-spacing: 0.02em;
+    }
+    @media (max-width:900px){ .container {padding:13px 3vw 23px 3vw;} nav {font-size:1rem;} .teamgrid{gap:16px;} }
+    @media (max-width:600px){
+      .container {padding:6vw 0 7vw 0; margin:0; border-radius:0;}
+      header {font-size:1.3rem;}
+      .twocolsflex { flex-direction:column;}
+    }
+  </style>
 </head>
 <body>
-    
-    <!-- NAVIGATION -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo" aria-label="BfB Lohra Startseite">
-                <img src="logo.png" alt="BfB Logo" class="nav-logo-img">
-            </a>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#hero">Start</a></li>
-                <li><a href="#about">Über uns</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#aktuelles">Aktuelles</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger" aria-label="Menü öffnen" role="button" tabindex="0">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
 
-    <!-- HERO SECTION -->
-    <section id="hero">
-        <div class="hero-content">
-            <img src="logo.png" alt="BfB Logo" class="hero-logo">
-            <h1>Bündnis für Bürgernähe Lohra</h1>
-            <p class="subtitle">Politik von Bürgern für Bürger</p>
-            <p class="stats">Stärkste Kraft in Lohra: 35% | 11 von 31 Sitzen</p>
-            <div class="hero-buttons">
-                <a href="#about" class="btn btn-primary">Mehr erfahren</a>
-                <a href="#team" class="btn btn-outline">Unser Team</a>
-            </div>
-        </div>
-    </section>
+<header>BfB Lohra – Demo</header>
+<nav>
+  <a href="#team">Team</a>
+  <a href="#aktuelles">Aktuelles</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
 
-    <!-- ÜBER UNS SECTION -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>Wer wir sind</h2>
-            </div>
-            
-            <div class="about-text">
-                <p>Wir, das Bündnis für Bürgernähe (BfB), sind eine politische Wählervereinigung aus der Mitte der Gesellschaft – keine Partei! Bürgernähe ist für uns keine Floskel, sondern unser Leitbild.</p>
-                
-                <p>Entstanden 1993 aus einer Bürgerinitiative zur Rettung des Schwimmbads Lohra, vertreten wir seither sachorientierte Kommunalpolitik von Bürgern für Bürger.</p>
-                
-                <p>Seit 2021 sind wir die stärkste politische Kraft in Lohra mit 35% der Stimmen und 11 von 31 Sitzen.</p>
-                
-                <p>Ganz gleich, aus welchem Ortsteil, ob alt oder jung: Wir bieten all jenen eine politische Heimat, die eine bürgernahe Kommunalpolitik der Mitte für die Gemeinde Lohra möchten.</p>
-            </div>
-            
-            <div class="value-cards">
-                <div class="value-card">
-                    <div class="icon">🤝</div>
-                    <h3>Bürgernähe</h3>
-                    <p>Direkte Kommunikation mit allen Bürgerinnen und Bürgern</p>
-                </div>
-                <div class="value-card">
-                    <div class="icon">🔍</div>
-                    <h3>Transparenz</h3>
-                    <p>Offene Entscheidungen, frühzeitige Information</p>
-                </div>
-                <div class="value-card">
-                    <div class="icon">🌱</div>
-                    <h3>Sachorientierung</h3>
-                    <p>Lösungen für lokale Themen, ohne Parteipolitik</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TEAM SECTION -->
-    <section id="team">
-        <div class="container">
-            <div class="section-header">
-                <h2>Unser Team</h2>
-                <p>Menschen aus Lohra für Lohra</p>
-            </div>
-            
-            <div class="team-grid">
-                <div class="team-card">
-                    <img src="harald.jpeg" alt="Harald Rink">
-                    <h3>Harald Rink</h3>
-                    <div class="role">Vorsitzender BfB</div>
-                    <p>Vorsitzender des BfB. Koordiniert unsere Arbeit und steht für sachorientierte Kommunalpolitik.</p>
-                </div>
-                <div class="team-card">
-                    <img src="klaus.jpg" alt="Klaus Müller">
-                    <h3>Klaus Müller</h3>
-                    <div class="role">Gemeindevertretung</div>
-                    <p>Engagiert sich für die Anliegen der Bürgerinnen und Bürger vor Ort.</p>
-                </div>
-                <div class="team-card">
-                    <img src="niklas.jpg" alt="Niklas Göpel">
-                    <h3>Niklas Göpel</h3>
-                    <div class="role">Gemeindevertretung</div>
-                    <p>Aus Lohra. Setzt sich für die Belange der Gemeinde ein.</p>
-                </div>
-                <div class="team-card">
-                    <img src="margarete.jpg" alt="Margarete Fiedler">
-                    <h3>Margarete Fiedler</h3>
-                    <div class="role">Gemeindevertretung</div>
-                    <p>Aus Kirchvers. Vertritt die Interessen ihres Ortsteils.</p>
-                </div>
-                <div class="team-card">
-                    <img src="markus.jpg" alt="Markus Schmidt">
-                    <h3>Markus Schmidt</h3>
-                    <div class="role">Gemeindevertretung</div>
-                    <p>Engagiert für eine bürgernahe Kommunalpolitik in Lohra.</p>
-                </div>
-                <div class="team-card">
-                    <img src="hans.jpg" alt="Hans Kraft">
-                    <h3>Hans Kraft</h3>
-                    <div class="role">Gemeindevertretung</div>
-                    <p>Setzt sich für die Belange der Gemeinde ein.</p>
-                </div>
-                <div class="team-card">
-                    <img src="michael.jpg" alt="Michael Witt">
-                    <h3>Michael Witt</h3>
-                    <div class="role">Gemeindevertretung</div>
-                    <p>Engagiert für Lohra und seine Ortsteile.</p>
-                </div>
-                <div class="team-card">
-                    <img src="kathrin.jpg" alt="Kathrin Neuser">
-                    <h3>Kathrin Neuser</h3>
-                    <div class="role">Gemeindevertretung</div>
-                    <p>Vertritt die Interessen der Bürgerinnen und Bürger.</p>
-                </div>
-                <div class="team-card">
-                    <img src="franziska.jpg" alt="Franziska Willershausen">
-                    <h3>Franziska Willershausen</h3>
-                    <div class="role">Gemeindevertretung</div>
-                    <p>Setzt sich für eine transparente Kommunalpolitik ein.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AKTUELLES SECTION -->
-    <section id="aktuelles">
-        <div class="container">
-            <div class="section-header">
-                <h2>Aktuelles</h2>
-                <p>Neuigkeiten und aktuelle Informationen</p>
-            </div>
-            <!-- Ergänzende Beteiligungsmodule unter "Aktuelles" -->
-
-<div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;margin-top:34px;">
-  <!-- Kummerkasten -->
-  <div style="flex:1;min-width:320px;max-width:480px;background:#fffce9;border-radius:10px;padding:28px 22px;box-shadow:0 2px 15px rgba(255,140,0,0.10)">
-    <h3 style="color:#FF8C00;margin-bottom:10px;display:flex;align-items:center;gap:10px">📬 Digitaler Kummerkasten</h3>
-    <p style="font-size:1.07rem;color:#333;opacity:0.95;">Du hast ein Anliegen, einen Wunsch oder Kritik? Sag uns anonym, was dich bewegt. Wir hören wirklich zu!</p>
-    <form id="kummerkastenForm" style="margin-top:19px">
-      <textarea name="nachricht" placeholder="Hier anonym schreiben..." rows="5" required style="width:100%;padding:12px;border-radius:6px;border:1px solid #ccc;font-size:1rem"></textarea>
-      <div style="margin:12px 0 6px">
-        <label style="font-size:0.95rem;color:#595959">Kategorie (freiwillig):</label>
-        <select name="kategorie" style="width:100%;padding:7px 6px;margin-top:5px;border-radius:4px">
-          <option>-- Auswahl --</option>
-          <option>Jugendlicher</option>
-          <option>Eltern</option>
-          <option>Senior</option>
-          <option>Verein</option>
-          <option>Bürger:in</option>
-          <option>Andere/K.A.</option>
-        </select>
-      </div>
-      <button type="submit" style="background:#FF8C00;border:none;color:white;padding:12px 30px;font-weight:700;font-size:1.05rem;border-radius:23px;margin-top:6px;cursor:pointer;">Absenden</button>
-    </form>
-    <div id="kummerkastenSuccess" style="display:none;color:#178b41;font-weight:600;margin-top:13px;">Danke für deine Nachricht! Wir nehmen sie ernst.</div>
-  </div>
-
-  <!-- Abstimmung -->
-  <div style="flex:1;min-width:320px;max-width:400px;background:#f5f8ff;border-radius:10px;padding:28px 22px;box-shadow:0 2px 15px rgba(0,108,255,0.07)">
-    <h3 style="color:#FF8C00;margin-bottom:13px;display:flex;align-items:center;gap:10px">🗳️ Deine Stimme zählt</h3>
-    <form id="abstimmungsForm">
-      <div style="font-size:1.08rem;margin-bottom:11px;font-weight:600;">Was ist aktuell dein Top-Wunsch für Lohra?</div>
-      <div style="margin-bottom:10px;">
-        <label><input type="radio" name="vote" required value="Skatepark"> Skatepark für Jugend</label><br>
-        <label><input type="radio" name="vote" required value="Jugendzentrum"> Neues Jugendzentrum</label><br>
-        <label><input type="radio" name="vote" required value="OpenAir"> Open-Air Kino</label><br>
-        <label><input type="radio" name="vote" required value="NightBus"> Nacht-Bus nach Marburg</label><br>
-        <label><input type="radio" name="vote" required value="Sport"> Mehr Sportangebote</label><br>
-      </div>
-      <button type="submit" style="background:#FF8C00;border:none;color:white;padding:10px 30px;font-weight:700;border-radius:22px;cursor:pointer;margin-top:5px;">Abstimmen</button>
-    </form>
-    <div id="abstimmungsResult" style="display:none;margin-top:15px;font-size:1.07rem;font-weight:600;color:#1b6a3c;"></div>
+<div class="container" id="team">
+  <h2>Unser Team</h2>
+  <div class="teamgrid">
+    <div class="teammember"><img src="1000198555.jpg" alt="Harald Rink"><h4>Harald Rink</h4><div class="rolle">Vorsitz</div><p>Koordiniert die Initiative und prüft alle Bürgeranfragen.</p></div>
+    <div class="teammember"><img src="1000198386.jpg" alt="Klaus Müller"><h4>Klaus Müller</h4><div class="rolle">Gemeindevertretung</div><p>Einsatz für Jugendarbeit und offene Kommunen.</p></div>
+    <div class="teammember"><img src="1000198479.jpg" alt="Niklas Göpel"><h4>Niklas Göpel</h4><div class="rolle">stellv. Fraktionsvorsitz</div><p>Stellvertretender Fraktionsvorsitzender.</p></div>
+    <div class="teammember"><img src="1000198481.jpg" alt="Margarete Fiedler"><h4>Margarete Fiedler</h4><div class="rolle">Finanzen</div><p>Hält Zahlen und Fördermittel im Blick. Für offene Projekte.</p></div>
+    <div class="teammember"><img src="1000198407.jpeg" alt="Markus Schmidt"><h4>Markus Schmidt</h4><div class="rolle">Kommunikation</div><p>Kümmert sich um eure Anliegen & Öffentlichkeit!</p></div>
+    <div class="teammember"><img src="christian.jpg" alt="Christian Kraft"><h4>Christian Kraft</h4><div class="rolle">stellv. Fraktionsvorsitz</div><p>Zweiter stellvertretender Fraktionsvorsitzender.</p></div>
   </div>
 </div>
 
-<script>
-  // Kummerkasten
-  document.getElementById("kummerkastenForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    this.style.display = "none";
-    document.getElementById("kummerkastenSuccess").style.display = "block";
-  });
+<div class="container" id="aktuelles">
+  <h2>Aktuelles – Beteiligen, Mitmachen, Informieren</h2>
+  <div style="margin-bottom:22px;">
+    <b>Unser aktuelles Ziel:</b> <span style="color:#008d50;">Ausbau Jugend-Freizeitmöglichkeiten</span> –
+    <span style="font-size:1.13em;color:#444;">Sag uns anonym, was dir fehlt… und stimme ab!</span>
+  </div>
+  <!-- Bild BGH -->
+  <div style="margin-bottom:36px;">
+    <img src="bgh.jpg" alt="BGH Lohra" style="max-width:100%;border-radius:8px;margin:12px 0;">
+    <p><b>Nächste Sitzung: Donnerstag, 11.12.2025, 19:00 Uhr im BGH Lohra.</b></p>
+  </div>
+  <!-- Kalender-ähnliche Liste -->
+  <div class="calendar-list">
+    <div class="calendar-item" onclick="alert('Donnerstag, 11.12.2025, 19:00 Uhr
+BGH Lohra
+Nächste Sitzung der Gemeindevertretung')">
+      <span class="calendar-date">11.12.</span>
+      <div class="calendar-title">Nächste Sitzung</div>
+      <div class="calendar-desc">BGH Lohra, 19:00 Uhr</div>
+    </div>
+    <div class="calendar-item" onclick="alert('Nach der letzten Wahl 2021 hatten wir 14 von 31 Sitzen. Drei sind ausgetreten. Jetzt sind wir noch 11 von 31.')">
+      <span class="calendar-date">2021/2025</span>
+      <div class="calendar-title">Sitzverteilung</div>
+      <div class="calendar-desc">14 → 11 Sitzsitze BfB</div>
+    </div>
+  </div>
 
-  // Abstimmungs-Demo (ohne Speicherung)
-  document.getElementById("abstimmungsForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    let v = this.vote.value;
-    let msg = "Danke! Deine Stimme für <b>" + v + "</b> wurde gezählt.";
-    this.style.display = "none";
-    document.getElementById("abstimmungsResult").innerHTML = msg;
-    document.getElementById("abstimmungsResult").style.display = "block";
-  });
+  <div class="twocolsflex">
+    <!-- Kummerkasten -->
+    <div class="colbox">
+      <h3 style="color:#FF8C00;display:flex;align-items:center;gap:10px">📬 Digitaler Kummerkasten</h3>
+      <p style="font-size:1.05rem;color:#333;opacity:0.99;">Hier kannst du anonym Wünsche, Sorgen, Vorschläge mitteilen.</p>
+      <form id="kummerkastenForm">
+        <textarea name="nachricht" placeholder="Hier anonym schreiben..." rows="5" required style="width:100%;padding:10px;border-radius:6px;border:1px solid #ccc;font-size:1.02rem"></textarea>
+        <div style="margin:13px 0 7px">
+          <label>Kategorie (optional):</label>
+          <select name="kategorie" style="width:100%;padding:7px 6px;margin-top:5px;border-radius:4px">
+            <option>-- Auswahl --</option>
+            <option>Jugendlicher</option>
+            <option>Eltern</option>
+            <option>Senior</option>
+            <option>Verein</option>
+            <option>Bürger:in</option>
+            <option>Andere/K.A.</option>
+          </select>
+        </div>
+        <button type="submit">Absenden</button>
+      </form>
+      <div id="kummerkastenSuccess" class="hidden">Danke für deine Nachricht! Wir nehmen sie ernst.</div>
+    </div>
+    <!-- Abstimmung -->
+    <div class="colbox colbox2">
+      <h3 style="color:#FF8C00;display:flex;align-items:center;gap:10px">🗳️ Deine Stimme zählt</h3>
+      <form id="abstimmungsForm">
+        <div style="font-size:1.11rem;margin-bottom:10px;font-weight:600;">Was freut dich dieses Jahr?</div>
+        <div style="margin-bottom:8px;">
+          <label><input type="radio" name="vote" value="Skatepark" required> Skatepark für Jugend</label><br>
+          <label><input type="radio" name="vote" value="Jugendzentrum"> Jugendzentrum</label><br>
+          <label><input type="radio" name="vote" value="OpenAir"> Open-Air Kino</label><br>
+          <label><input type="radio" name="vote" value="NightBus"> Nachtbus nach Marburg</label><br>
+          <label><input type="radio" name="vote" value="Sport"> Mehr Sportangebote</label><br>
+        </div>
+        <button type="submit">Abstimmen</button>
+      </form>
+      <div id="abstimmungsResult" class="vote-result hidden"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="kontakt">
+  <h2>Kontakt & Impressum</h2>
+  <div>
+    Kontakt: info@bfb-lohra.de&nbsp; · &nbsp; Friedrich-Walther-Str. 10, 35102 Lohra
+    <br><br>
+    <b>Newsletter:</b> <a href="#">Jetzt anmelden</a>
+    <br>
+    <b>Folge uns:</b> <a href="#">Instagram</a> | <a href="#">Facebook</a>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Bündnis für Bürgernähe Lohra &middot; Demo für Beteiligung & Bürgernähe
+</footer>
+
+<script>
+document.getElementById("kummerkastenForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  this.style.display = "none";
+  document.getElementById("kummerkastenSuccess").classList.remove("hidden");
+});
+document.getElementById("abstimmungsForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  let v = this.vote.value;
+  let msg = "Danke! Deine Stimme für <b>" + v + "</b> wurde gezählt.";
+  this.style.display = "none";
+  let resbox = document.getElementById("abstimmungsResult");
+  resbox.innerHTML = msg; resbox.classList.remove("hidden");
+});
 </script>
 
-            <div class="news-grid">
-                <article class="news-card">
-                    <img src="team-plakat.jpg" alt="BfB Team Wahlplakat">
-                    <div class="news-card-content">
-                        <div class="news-date">2021</div>
-                        <h3>Gemeinsam gestalten wir die Zukunft</h3>
-                        <p>Unser Team für Lohra: Gemeinsam gestalten wir die Zukunft unserer Gemeinde!</p>
-                    </div>
-                </article>
-                <article class="news-card">
-                    <div class="news-card-content">
-                        <div class="news-date">März 2021</div>
-                        <h3>Historischer Wahlerfolg</h3>
-                        <p>Mit 35% der Stimmen wird BfB stärkste Kraft in Lohra. 11 von 31 Sitzen in der Gemeindevertretung. Vielen Dank für Ihr Vertrauen!</p>
-                    </div>
-                </article>
-                <article class="news-card">
-                    <div class="news-card-content">
-                        <div class="news-date">Aktuell</div>
-                        <h3>Folgen Sie uns online</h3>
-                        <p>Bleiben Sie auf dem Laufenden mit unseren neuesten Nachrichten und Ankündigungen:</p>
-                        <p>
-                            <a href="https://www.facebook.com/share/1GL9L3GJ2t/" target="_blank" rel="noopener noreferrer">→ Facebook</a><br>
-                            <a href="https://www.instagram.com/bfb.lohra?igsh=cmszdmpicHlyYWI1" target="_blank" rel="noopener noreferrer">→ Instagram</a><br>
-                            <a href="https://www.google.com/search?q=BfB+Lohra" target="_blank" rel="noopener noreferrer">→ Google Suche</a>
-                        </p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- KONTAKT SECTION -->
-    <section id="kontakt">
-        <div class="container">
-            <div class="section-header">
-                <h2>Kontakt</h2>
-                <p>Wir freuen uns auf Ihre Nachricht</p>
-            </div>
-            
-            <div style="max-width: 600px; margin: 0 auto; background-color: var(--background-gray); padding: 40px; border-radius: 8px;">
-                <h3 style="color: var(--primary-orange); margin-bottom: 20px;">Bündnis für Bürgernähe (BfB) Lohra</h3>
-                <p style="margin-bottom: 15px;"><strong style="color: var(--primary-orange);">Vorsitzender:</strong> Harald Rink</p>
-                <p style="margin-bottom: 15px;"><strong style="color: var(--primary-orange);">Adresse:</strong> Friedrich-Walther-Str. 10, 35102 Lohra</p>
-                <p style="margin-bottom: 15px;"><strong style="color: var(--primary-orange);">E-Mail:</strong> <a href="mailto:BfB-Lohra@web.de" style="color: var(--text-dark);">BfB-Lohra@web.de</a></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <img src="logo.png" alt="BfB Logo" class="footer-logo-img">
-                <h3>Bündnis für Bürgernähe Lohra</h3>
-                <p>Politik von Bürgern für Bürger</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Kontakt</h3>
-                <p>Friedrich-Walther-Str. 10<br>35102 Lohra<br>BfB-Lohra@web.de</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Folgen Sie uns</h3>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/share/1GL9L3GJ2t/" target="_blank" rel="noopener noreferrer" class="social-link">
-                        <span class="social-icon">📘</span> Facebook
-                    </a>
-                    <a href="https://www.instagram.com/bfb.lohra?igsh=cmszdmpicHlyYWI1" target="_blank" rel="noopener noreferrer" class="social-link">
-                        <span class="social-icon">📷</span> Instagram
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Bündnis für Bürgernähe (BfB) Lohra - Eine überparteiliche Wählervereinigung</p>
-        </div>
-    </footer>
-
-    <!-- JAVASCRIPT -->
-    <script>
-        // Sticky Navigation
-        const navbar = document.getElementById('navbar');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Hamburger Menu
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-        
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-    </script>
 </body>
-</html>
+</html>   
