@@ -741,7 +741,69 @@
                 <h2>Aktuelles</h2>
                 <p>Neuigkeiten und aktuelle Informationen</p>
             </div>
-            
+            <!-- Ergänzende Beteiligungsmodule unter "Aktuelles" -->
+
+<div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;margin-top:34px;">
+  <!-- Kummerkasten -->
+  <div style="flex:1;min-width:320px;max-width:480px;background:#fffce9;border-radius:10px;padding:28px 22px;box-shadow:0 2px 15px rgba(255,140,0,0.10)">
+    <h3 style="color:#FF8C00;margin-bottom:10px;display:flex;align-items:center;gap:10px">📬 Digitaler Kummerkasten</h3>
+    <p style="font-size:1.07rem;color:#333;opacity:0.95;">Du hast ein Anliegen, einen Wunsch oder Kritik? Sag uns anonym, was dich bewegt. Wir hören wirklich zu!</p>
+    <form id="kummerkastenForm" style="margin-top:19px">
+      <textarea name="nachricht" placeholder="Hier anonym schreiben..." rows="5" required style="width:100%;padding:12px;border-radius:6px;border:1px solid #ccc;font-size:1rem"></textarea>
+      <div style="margin:12px 0 6px">
+        <label style="font-size:0.95rem;color:#595959">Kategorie (freiwillig):</label>
+        <select name="kategorie" style="width:100%;padding:7px 6px;margin-top:5px;border-radius:4px">
+          <option>-- Auswahl --</option>
+          <option>Jugendlicher</option>
+          <option>Eltern</option>
+          <option>Senior</option>
+          <option>Verein</option>
+          <option>Bürger:in</option>
+          <option>Andere/K.A.</option>
+        </select>
+      </div>
+      <button type="submit" style="background:#FF8C00;border:none;color:white;padding:12px 30px;font-weight:700;font-size:1.05rem;border-radius:23px;margin-top:6px;cursor:pointer;">Absenden</button>
+    </form>
+    <div id="kummerkastenSuccess" style="display:none;color:#178b41;font-weight:600;margin-top:13px;">Danke für deine Nachricht! Wir nehmen sie ernst.</div>
+  </div>
+
+  <!-- Abstimmung -->
+  <div style="flex:1;min-width:320px;max-width:400px;background:#f5f8ff;border-radius:10px;padding:28px 22px;box-shadow:0 2px 15px rgba(0,108,255,0.07)">
+    <h3 style="color:#FF8C00;margin-bottom:13px;display:flex;align-items:center;gap:10px">🗳️ Deine Stimme zählt</h3>
+    <form id="abstimmungsForm">
+      <div style="font-size:1.08rem;margin-bottom:11px;font-weight:600;">Was ist aktuell dein Top-Wunsch für Lohra?</div>
+      <div style="margin-bottom:10px;">
+        <label><input type="radio" name="vote" required value="Skatepark"> Skatepark für Jugend</label><br>
+        <label><input type="radio" name="vote" required value="Jugendzentrum"> Neues Jugendzentrum</label><br>
+        <label><input type="radio" name="vote" required value="OpenAir"> Open-Air Kino</label><br>
+        <label><input type="radio" name="vote" required value="NightBus"> Nacht-Bus nach Marburg</label><br>
+        <label><input type="radio" name="vote" required value="Sport"> Mehr Sportangebote</label><br>
+      </div>
+      <button type="submit" style="background:#FF8C00;border:none;color:white;padding:10px 30px;font-weight:700;border-radius:22px;cursor:pointer;margin-top:5px;">Abstimmen</button>
+    </form>
+    <div id="abstimmungsResult" style="display:none;margin-top:15px;font-size:1.07rem;font-weight:600;color:#1b6a3c;"></div>
+  </div>
+</div>
+
+<script>
+  // Kummerkasten
+  document.getElementById("kummerkastenForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    this.style.display = "none";
+    document.getElementById("kummerkastenSuccess").style.display = "block";
+  });
+
+  // Abstimmungs-Demo (ohne Speicherung)
+  document.getElementById("abstimmungsForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    let v = this.vote.value;
+    let msg = "Danke! Deine Stimme für <b>" + v + "</b> wurde gezählt.";
+    this.style.display = "none";
+    document.getElementById("abstimmungsResult").innerHTML = msg;
+    document.getElementById("abstimmungsResult").style.display = "block";
+  });
+</script>
+
             <div class="news-grid">
                 <article class="news-card">
                     <img src="team-plakat.jpg" alt="BfB Team Wahlplakat">
