@@ -747,7 +747,32 @@
                 <h2>Aktuelles</h2>
                 <p>Neuigkeiten und aktuelle Informationen</p>
             </div>
-            <!-- Ergänzende Beteiligungsmodule unter "Aktuelles" -->
+          <!-- Aktuelles-Beitrag mit klickbarem BGH-Link -->
+<div class="news-card">
+    <div class="news-card-content">
+        <div class="news-date">Aktuell</div>
+        <h3>Nächste Sitzung der Gemeindevertretung</h3>
+        <p>
+            Am Do. 11.12.2025, 19:00 Uhr im <a href="#" id="bghlink">BGH Lohra</a>.
+        </p>
+    </div>
+</div>
+
+<!-- Popup für das BGH-Bild -->
+<div id="bghPopup" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1111;background:rgba(0,0,0,0.75);align-items:center;justify-content:center;">
+  <div style="position:relative;">
+    <img src="bgh.jpg" alt="BGH Lohra" style="max-width:96vw;max-height:88vh;border-radius:12px;">
+    <button onclick="document.getElementById('bghPopup').style.display='none'" style="position:absolute;top:-18px;right:-18px;background:#fff;color:#cc3300;border:none;border-radius:50%;font-size:1.7em;width:36px;height:36px;box-shadow:0 2px 10px #0005;cursor:pointer;">✖</button>
+  </div>
+</div>
+
+<script>
+document.getElementById("bghlink").onclick = function(e){
+    e.preventDefault();
+    document.getElementById("bghPopup").style.display = "flex";
+};
+</script>
+  <!-- Ergänzende Beteiligungsmodule unter "Aktuelles" -->
 
 <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;margin-top:34px;">
   <!-- Kummerkasten -->
